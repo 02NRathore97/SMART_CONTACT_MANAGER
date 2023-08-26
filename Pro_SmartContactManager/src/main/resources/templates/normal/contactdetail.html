@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/userbase::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Contact Details</title>
+</head>
+<body>
+	
+		<section>
+		<div class="card mr-3 ml-3">
+			<div class="card-body" th:if=${contact}>
+				<div class="container text-center">
+					<img style="heigth: 200px; width:200px;" th:src="@{'/img/'+${contact.image}}" alt="profile photo" class="my_profile_picture"/>
+					<h3><span th:text="${contact.name}"></span>(<span th:text="${contact.secondname}"></span>)</h3>
+				<div class="table-responsive">
+				<table class="table">
+					
+						<tr>
+							<th scope="col">#ID</th>
+							<th th:text="${contact.cid}"></th>
+						</tr>
+						<tr>
+							<th scope="col">EMAIL</th>
+							<td th:text="${contact.name}"></td>
+						</tr>
+						<tr>
+							<th scope="col">PHONE</th>
+							<td th:text="${contact.phone}"></td>
+						</tr>
+						<tr>
+							<th scope="col">DESCRIPTION</th>
+							<td th:utext="${contact.description}"></td>
+						</tr>
+					
+				</table>
+				</div>
+				</div>
+			</div>
+			<div th:unless=${contact}>
+				<h2 class="text-center">You don't have permission to see this contact....</h2>
+			</div>
+		</div>
+		</section>
+	</body>
+</html>

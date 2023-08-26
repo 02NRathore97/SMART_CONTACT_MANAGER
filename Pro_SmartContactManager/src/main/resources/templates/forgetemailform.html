@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Forget Form Page</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3 mt-5 p-5" id="shadow" style="background-color: white">
+				
+				<!--message box -->
+		<div th:if="${session.message}" class="container">
+
+			<div class="alert alert-danger text-center" role="alert">
+				<span th:text="${session.message}"></span>
+			</div>
+			<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+		</div>
+				
+				<!--Email form -->
+					<h1 class="text-center m-3">Your Registered Email </h1>
+					<form th:action=@{/sendOTP} method="post">
+						<div class="form-group">
+							<input required name="email" type="email" placeholder="Enter your Email" class="form-control"/>
+							<div class="container text-center my-3">
+								<button class="btn btn-warning" type="submit">Send OTP</button>
+							</div>
+						</div>					
+					</form>
+							
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
